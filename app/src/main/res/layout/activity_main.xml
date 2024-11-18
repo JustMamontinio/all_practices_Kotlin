@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,9 +27,19 @@
                 android:textSize="20sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/LDpart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/black">
+            <TextView
+                android:id="@+id/textttttttt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TV"
+                android:textSize="40sp"
+                android:textColor="@color/green"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -41,7 +52,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@color/blue">
+            <EditText
+                android:id="@+id/Texttt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="What?)"
+                android:gravity="center"
+                android:textColor="@color/red">
+            </EditText>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/four_part"
             android:layout_width="match_parent"

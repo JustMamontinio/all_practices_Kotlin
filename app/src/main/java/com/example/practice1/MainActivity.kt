@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -26,17 +27,13 @@ class MainActivity : AppCompatActivity() {
 
         //Проверка на дабл клик
         var condtionForRD = 0
-        var LK = 0
+        var LD = 0
+        var texttt = findViewById<EditText>(R.id.Texttt)
+        var three_part = findViewById<LinearLayout>(R.id.LDpart)
         var four_part = findViewById<LinearLayout>(R.id.four_part)
         var ImV = findViewById<ImageView>(R.id.ImV)
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
             // Обработчик двойного клика
-            override fun onLongPress(e: MotionEvent) {
-                if (LK == 0) {
-                    LK = 1
-
-                }
-            }
             override fun onDoubleTap(e: MotionEvent): Boolean {
                  if (ImV.visibility == View.VISIBLE){
                     ImV.visibility = View.INVISIBLE
@@ -46,6 +43,38 @@ class MainActivity : AppCompatActivity() {
                 }
                 return true
             }
+        })
+        val gestureDetector1 = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            //обработчик лонг клика
+            override fun onLongPress(e: MotionEvent) {
+                if (LD == 0) {
+                    LD = 1
+                    three_part.background =
+                        AppCompatResources.getDrawable(this@MainActivity, R.color.purple)
+                } else {
+                    LD = 0
+                    three_part.background =
+                        AppCompatResources.getDrawable(this@MainActivity, R.color.black)
+                }
+            }
+        })
+        var Texttttt = findViewById<TextView>(R.id.textttttttt)
+        texttt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Проверяем введенный текст и изменяем содержимое three_part
+                if (s?.toString()?.lowercase()?.contains("samsung") == true) {
+                    Texttttt?.text = "ААА"
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
         })
 
         //Просто кнопка, меняющая цвет фона
@@ -66,6 +95,10 @@ class MainActivity : AppCompatActivity() {
         // не совсем понимаю, почему именно так, но работает
         four_part.setOnTouchListener { _, event ->
             gestureDetector.onTouchEvent(event)
+            true
+        }
+        three_part.setOnTouchListener { _, event ->
+            gestureDetector1.onTouchEvent(event)
             true
         }
 
